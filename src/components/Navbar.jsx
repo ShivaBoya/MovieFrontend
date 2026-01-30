@@ -140,6 +140,16 @@ const Navbar = () => {
                                 <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
                             </button>
                             <button
+                                onClick={() => {
+                                    openDrawer();
+                                    setIsMobileMenuOpen(false);
+                                }}
+                                className="flex items-center gap-3 p-3 text-white bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700 rounded-lg font-semibold shadow-md"
+                            >
+                                <Plus size={20} />
+                                <span>Add Movie</span>
+                            </button>
+                            <button
                                 onClick={handleLogout}
                                 className="flex items-center gap-3 p-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg"
                             >

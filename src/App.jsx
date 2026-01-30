@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -19,6 +19,7 @@ import Profile from './pages/Profile';
 
 const Layout = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate(); // Hook for navigation
   const hideNavbarRoutes = ['/login', '/signup'];
   const showNavbar = !hideNavbarRoutes.includes(location.pathname);
 
@@ -36,6 +37,7 @@ const Layout = ({ children }) => {
       } else {
         await api.post('/movies', data);
         toast.success('Movie created successfully!');
+        navigate('/collection'); // Navigate to collection after adding
       }
       triggerMovieRefresh(); // Notify Home to reload
       closeDrawer();
