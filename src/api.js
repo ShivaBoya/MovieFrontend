@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    // Usage: Set VITE_API_URL in .env to your backend URL (e.g., https://my-backend.onrender.com)
-    // Default fallback is localhost:5000
-    baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api`,
+    baseURL: 'https://moviebackend-2q46.onrender.com/api',
     withCredentials: true,
 });
 
