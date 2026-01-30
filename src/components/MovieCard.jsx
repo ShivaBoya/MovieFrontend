@@ -86,7 +86,7 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                 <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-3 md:p-4"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: isHovered ? 1 : 0 }}
+                    animate={{ opacity: isMobile ? 1 : (isHovered ? 1 : 0) }}
                     transition={{ duration: 0.2 }}
                 >
                     <h3 className="text-white font-bold text-sm md:text-lg leading-tight mb-1 drop-shadow-md line-clamp-1">
@@ -106,11 +106,20 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                         <button className="border-2 border-slate-400 text-white p-1 md:p-1.5 rounded-full hover:border-white transition-colors">
                             <Plus size={isMobile ? 12 : 16} />
                         </button>
-                        <div className="ml-auto">
-                            <button className="border border-slate-500 text-slate-300 p-1 rounded-full hover:border-white hover:text-white transition-colors">
-                                <ChevronDown size={isMobile ? 14 : 18} />
-                            </button>
-                        </div>
+                        {/* Mobile Action Buttons (Visible Always) */}
+                        {user && isMobile && (
+                            <div className="ml-auto flex gap-2">
+                                <ActionButtons user={user} movie={movie} onEdit={onEdit} onDelete={onDelete} mini />
+                            </div>
+                        )}
+                        {/* Desktop Expand Arrow */}
+                        {!isMobile && (
+                            <div className="ml-auto">
+                                <button className="border border-slate-500 text-slate-300 p-1 rounded-full hover:border-white hover:text-white transition-colors">
+                                    <ChevronDown size={18} />
+                                </button>
+                            </div>
+                        )}
                     </div>
 
                     {/* Desktop Extra Info */}
@@ -122,7 +131,7 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                         </div>
                     </div>
 
-                    {/* Admin Actions */}
+                    {/* Admin Actions (Desktop Only - Top Right) */}
                     {user && !isMobile && (
                         <div className="absolute top-2 right-2">
                             <ActionButtons user={user} movie={movie} onEdit={onEdit} onDelete={onDelete} mini />
