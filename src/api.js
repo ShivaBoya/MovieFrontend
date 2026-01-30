@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-    // Switch back to localhost for development to hit the new proxy routes
-    baseURL: 'http://localhost:5001/api',
-    // baseURL: 'https://moviebackend-2q46.onrender.com/api', // Uncomment for production
+    // Usage: Set VITE_API_URL in .env to your backend URL (e.g., https://my-backend.onrender.com)
+    // Default fallback is localhost:5000
+    baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api`,
     withCredentials: true,
 });
 
