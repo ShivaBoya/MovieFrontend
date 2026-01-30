@@ -1,14 +1,26 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: '/api',
+    baseURL: 'https://moviebackend-2q46.onrender.com/api',
     withCredentials: true,
 });
 
+// Add a request interceptor to inject the token
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
 export const searchMovies = async (query) => {
-    const response = await axios.get(`/api/search?title=${query}`, {
-        withCredentials: true
-    });
+    const response = await api.get(`/search?title=${query}`);
     return response.data;
 };
 

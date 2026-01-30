@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
                 setUser(data);
             } catch (err) {
                 setUser(null);
+                localStorage.removeItem('token'); // Clear token if invalid
             } finally {
                 setLoading(false);
             }
@@ -25,7 +26,12 @@ export const AuthProvider = ({ children }) => {
         checkAuth();
     }, []);
 
-    const login = (data) => setUser(data);
+    const login = (data) => {
+        setUser(data);
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+        }
+    };
 
     const googleSignIn = async () => {
         try {
@@ -39,6 +45,8 @@ export const AuthProvider = ({ children }) => {
                 email: user.email,
                 avatar: user.photoURL
             });
+            // Google Sign In currently doesn't go through backend authRoutes logic for token in this context
+            // You might want to call a backend endpoint verify-google-token to get a JWT
             return user;
         } catch (error) {
             console.error("Google Sign In Error", error);
@@ -50,6 +58,9 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await api.put('/auth/profile', data);
             setUser(response.data); // Update local state with new data
+            if (response.data.token) {
+                localStorage.setItem('token', response.data.token);
+            }
             return response.data;
         } catch (error) {
             console.error("Profile Update Error", error);
@@ -59,6 +70,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
+        localStorage.removeItem('token');
         api.post('/auth/logout');
     };
 

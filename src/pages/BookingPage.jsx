@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { socket } from '../socket';
 import toast from 'react-hot-toast';
 
@@ -14,7 +14,7 @@ const BookingPage = () => {
         // Fetch Showtime Details
         const fetchShowtime = async () => {
             try {
-                const res = await axios.get(`/api/showtimes/${showtimeId}`);
+                const res = await api.get(`/showtimes/${showtimeId}`);
                 setShowtime(res.data);
                 setLoading(false);
             } catch (err) {

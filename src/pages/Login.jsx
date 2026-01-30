@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -20,8 +20,8 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Use relative path via proxy
-            const { data } = await axios.post('/api/auth/login', formData, { withCredentials: true });
+            // Use centralized api instance
+            const { data } = await api.post('/auth/login', formData);
             login(data);
             toast.success(`Welcome back, ${data.username || 'User'}!`);
             navigate('/');

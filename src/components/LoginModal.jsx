@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { X, Mail, Lock, User, Chrome } from 'lucide-react';
 import toast from 'react-hot-toast';
-import axios from 'axios';
+import api from '../api';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LoginModal = ({ isOpen, onClose }) => {
@@ -25,9 +25,9 @@ const LoginModal = ({ isOpen, onClose }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
-            // Use axios directly as seen in Login.jsx, assuming proxy is set up or relative path works
-            const { data } = await axios.post(endpoint, formData, { withCredentials: true });
+            const endpoint = isLogin ? '/auth/login' : '/auth/signup';
+            // Use centralized api instance
+            const { data } = await api.post(endpoint, formData);
             login(data);
             toast.success(isLogin ? `Welcome back!` : `Account created!`);
             onClose();
