@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Info, ChevronRight, ChevronLeft } from 'lucide-react';
+import { useUI } from '../context/UIContext';
 
 const HeroCarousel = ({ movies }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const { playTrailer } = useUI();
 
     // Auto-slide effect
     useEffect(() => {
@@ -98,7 +100,10 @@ const HeroCarousel = ({ movies }) => {
                         transition={{ delay: 0.5 }}
                         className="flex items-center gap-4 mt-8"
                     >
-                        <button className="bg-white text-black px-6 md:px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-opacity-90 transition-all text-lg shadow-lg hover:scale-105 active:scale-95">
+                        <button
+                            onClick={() => playTrailer(currentMovie.id)}
+                            className="bg-white text-black px-6 md:px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-opacity-90 transition-all text-lg shadow-lg hover:scale-105 active:scale-95"
+                        >
                             <Play fill="currentColor" size={24} />
                             Play
                         </button>

@@ -8,8 +8,9 @@ import { useAuth } from '../context/AuthContext';
 import { useUI } from '../context/UIContext';
 
 // Row Component for individual categories (Grid Layout)
-const MovieRow = ({ title, fetchFn, genreId }) => {
+const MovieRow = ({ title, fetchFn, genreId, onEdit, onDelete }) => {
     const [movies, setMovies] = useState([]);
+    const { movieRefreshTrigger } = useUI(); // Global Refresh Listener
 
     useEffect(() => {
         const loadRow = async () => {
@@ -29,7 +30,7 @@ const MovieRow = ({ title, fetchFn, genreId }) => {
             }
         };
         loadRow();
-    }, [fetchFn, genreId, title]);
+    }, [fetchFn, genreId, title, movieRefreshTrigger]); // Added trigger
 
     if (movies.length === 0) return null;
 
@@ -41,8 +42,13 @@ const MovieRow = ({ title, fetchFn, genreId }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                 {movies.map((movie) => (
-                    <div key={movie.id} className="w-full aspect-video">
-                        <MovieCard movie={movie} viewMode="grid" />
+                    <div key={movie._id || movie.id} className="w-full aspect-video">
+                        <MovieCard
+                            movie={movie}
+                            viewMode="grid"
+                            onEdit={onEdit}
+                            onDelete={onDelete}
+                        />
                     </div>
                 ))}
             </div>
@@ -55,7 +61,7 @@ const Home = () => {
     const [popularMovies, setPopularMovies] = useState([]); // For Hero
     const [viewMode, setViewMode] = useState('grid');
     const { user } = useAuth();
-    const { openDrawer, movieRefreshTrigger } = useUI();
+    const { openDrawer, triggerMovieRefresh } = useUI();
 
     // Initial Load (Hero Data Only)
     useEffect(() => {
@@ -72,6 +78,24 @@ const Home = () => {
         loadData();
     }, []);
 
+    // Handlers
+    const handleEdit = (movie) => {
+        openDrawer(movie); // Opens MovieDrawer with data
+    };
+
+    const handleDelete = async (id) => {
+        if (window.confirm("Are you sure you want to delete this movie?")) {
+            try {
+                await import('../api').then(module => module.deleteMovie(id));
+                toast.success("Movie deleted successfully");
+                triggerMovieRefresh(); // Reloads all rows
+            } catch (err) {
+                console.error("Delete failed", err);
+                toast.error("Failed to delete movie");
+            }
+        }
+    };
+
     return (
         <div className="min-h-screen bg-transparent text-white font-sans pb-20">
 
@@ -80,13 +104,18 @@ const Home = () => {
 
             {/* 2. TMDB Content Stacked Rows (Netflix Style) */}
             <div className="flex flex-col gap-2 mt-4">
-                <MovieRow title="Trending Now" fetchFn={() => fetchPopular(1)} />
-                <MovieRow title="Action Blockbusters" genreId={28} />
-                <MovieRow title="Laugh Out Loud Comedies" genreId={35} />
-                <MovieRow title="Spine Chilling Horror" genreId={27} />
-                <MovieRow title="Romantic Hits" genreId={10749} />
-                <MovieRow title="Family Favorites" genreId={10751} />
-                <MovieRow title="Sci-Fi Adventures" genreId={878} />
+                <MovieRow
+                    title="Trending Now"
+                    fetchFn={() => fetchPopular(1)}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                />
+                <MovieRow title="Action Blockbusters" genreId={28} onEdit={handleEdit} onDelete={handleDelete} />
+                <MovieRow title="Laugh Out Loud Comedies" genreId={35} onEdit={handleEdit} onDelete={handleDelete} />
+                <MovieRow title="Spine Chilling Horror" genreId={27} onEdit={handleEdit} onDelete={handleDelete} />
+                <MovieRow title="Romantic Hits" genreId={10749} onEdit={handleEdit} onDelete={handleDelete} />
+                <MovieRow title="Family Favorites" genreId={10751} onEdit={handleEdit} onDelete={handleDelete} />
+                <MovieRow title="Sci-Fi Adventures" genreId={878} onEdit={handleEdit} onDelete={handleDelete} />
             </div>
 
         </div>

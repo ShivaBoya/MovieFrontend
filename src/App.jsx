@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import MovieDrawer from './components/MovieDrawer';
 import LoginModal from './components/LoginModal';
+import TrailerModal from './components/TrailerModal';
 import api from './api';
 import toast from 'react-hot-toast';
 import BookingPage from './pages/BookingPage.jsx';
@@ -68,6 +69,9 @@ const Layout = ({ children }) => {
         isOpen={isLoginModalOpen}
         onClose={closeLoginModal}
       />
+
+      {/* Global Trailer Modal */}
+      <TrailerModal />
     </div>
   );
 };

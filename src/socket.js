@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const URL = 'https://moviebackend-2q46.onrender.com';
+const URL = 'http://localhost:5001';
 
 export const socket = io(URL, {
     autoConnect: false,

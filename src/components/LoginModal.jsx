@@ -25,7 +25,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const endpoint = isLogin ? '/auth/login' : '/auth/signup';
+            const endpoint = isLogin ? '/auth/login' : '/auth/register';
             // Use centralized api instance
             const { data } = await api.post(endpoint, formData);
             login(data);

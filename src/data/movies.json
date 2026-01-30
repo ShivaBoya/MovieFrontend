@@ -1,0 +1,452 @@
+[
+    {
+        "id": 1,
+        "title": "Inception",
+        "year": 2010,
+        "rating": 8.8,
+        "genre": "Sci-Fi",
+        "poster": "/inception.jpg",
+        "trailer": "https://www.youtube.com/watch?v=YoHD9XEInc0"
+    },
+    {
+        "id": 2,
+        "title": "The Dark Knight",
+        "year": 2008,
+        "rating": 9.0,
+        "genre": "Action",
+        "poster": "/the dark night.jpg",
+        "trailer": "https://www.youtube.com/watch?v=EXeTwQWrcwY"
+    },
+    {
+        "id": 3,
+        "title": "Interstellar",
+        "year": 2014,
+        "rating": 8.6,
+        "genre": "Sci-Fi",
+        "poster": "/interesteller.jpg",
+        "trailer": "https://www.youtube.com/watch?v=zSWdZVtXT7E"
+    },
+    {
+        "id": 4,
+        "title": "Avengers: Endgame",
+        "year": 2019,
+        "rating": 8.4,
+        "genre": "Action",
+        "poster": "/avengers.jpg",
+        "trailer": "https://www.youtube.com/watch?v=TcMBFSGVi1c"
+    },
+    {
+        "id": 5,
+        "title": "Joker",
+        "year": 2019,
+        "rating": 8.5,
+        "genre": "Thriller",
+        "poster": "/joker.jpg",
+        "trailer": "https://www.youtube.com/watch?v=zAGVQLHvwOY"
+    },
+    {
+        "id": 6,
+        "title": "Titanic",
+        "year": 1997,
+        "rating": 7.9,
+        "genre": "Romance",
+        "poster": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=CHekzSiZjrY"
+    },
+    {
+        "id": 7,
+        "title": "Toy Story",
+        "year": 1995,
+        "rating": 8.3,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=KYz2wyBy3kc"
+    },
+    {
+        "id": 8,
+        "title": "The Conjuring",
+        "year": 2013,
+        "rating": 7.5,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=k10ETZ41q5o"
+    },
+    {
+        "id": 9,
+        "title": "The Matrix",
+        "year": 1999,
+        "rating": 8.7,
+        "genre": "Sci-Fi",
+        "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=vKQi3bBA1y8"
+    },
+    {
+        "id": 10,
+        "title": "Forrest Gump",
+        "year": 1994,
+        "rating": 8.8,
+        "genre": "Family",
+        "poster": "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=bLvqoHBptjg"
+    },
+    {
+        "id": 11,
+        "title": "Gladiator",
+        "year": 2000,
+        "rating": 8.5,
+        "genre": "Action",
+        "poster": "/gladiator.jpg",
+        "trailer": "https://www.youtube.com/watch?v=owK1qxDselE"
+    },
+    {
+        "id": 12,
+        "title": "The Lion King",
+        "year": 1994,
+        "rating": 8.5,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=7TavVZMewpY"
+    },
+    {
+        "id": 13,
+        "title": "Deadpool",
+        "year": 2016,
+        "rating": 8.0,
+        "genre": "Comedy",
+        "poster": "/deadpool.jpg",
+        "trailer": "https://www.youtube.com/watch?v=ONHBaC-pfsk"
+    },
+    {
+        "id": 14,
+        "title": "It",
+        "year": 2017,
+        "rating": 7.3,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=FnCdOQsX5kc"
+    },
+    {
+        "id": 15,
+        "title": "La La Land",
+        "year": 2016,
+        "rating": 8.0,
+        "genre": "Romance",
+        "poster": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=0pdqf4P9MB8"
+    },
+    {
+        "id": 16,
+        "title": "Jurassic Park",
+        "year": 1993,
+        "rating": 8.2,
+        "genre": "Action",
+        "poster": "/jurrasikpark.jpg",
+        "trailer": "https://www.youtube.com/watch?v=lc0UehYemQA"
+    },
+    {
+        "id": 17,
+        "title": "Finding Nemo",
+        "year": 2003,
+        "rating": 8.2,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=wZdpNglLbt8"
+    },
+    {
+        "id": 18,
+        "title": "Parasite",
+        "year": 2019,
+        "rating": 8.6,
+        "genre": "Thriller",
+        "poster": "https://images.unsplash.com/photo-1514302240736-b1fee59858eb?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=5xH0HfJHsaY"
+    },
+    {
+        "id": 19,
+        "title": "Up",
+        "year": 2009,
+        "rating": 8.2,
+        "genre": "Family",
+        "poster": "/up.jpg",
+        "trailer": "https://www.youtube.com/watch?v=ORFWdXl_zJ4"
+    },
+    {
+        "id": 20,
+        "title": "Gravity",
+        "year": 2013,
+        "rating": 7.7,
+        "genre": "Sci-Fi",
+        "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=OiTiKOy59o4"
+    },
+    {
+        "id": 21,
+        "title": "The Hangover",
+        "year": 2009,
+        "rating": 7.7,
+        "genre": "Comedy",
+        "poster": "/the hangover.jpg",
+        "trailer": "https://www.youtube.com/watch?v=tlize92ffnY"
+    },
+    {
+        "id": 22,
+        "title": "A Quiet Place",
+        "year": 2018,
+        "rating": 7.5,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=WR7cc5t7tv8"
+    },
+    {
+        "id": 23,
+        "title": "Shrek",
+        "year": 2001,
+        "rating": 7.9,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=CwXOrWvPBPk"
+    },
+    {
+        "id": 24,
+        "title": "The Notebook",
+        "year": 2004,
+        "rating": 7.8,
+        "genre": "Romance",
+        "poster": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=FC6biTjEyZw"
+    },
+    {
+        "id": 25,
+        "title": "Mad Max: Fury Road",
+        "year": 2015,
+        "rating": 8.1,
+        "genre": "Action",
+        "poster": "/madmaxfury.jpg",
+        "trailer": "https://www.youtube.com/watch?v=hEJnMQG9ev8"
+    },
+    {
+        "id": 26,
+        "title": "Coco",
+        "year": 2017,
+        "rating": 8.4,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=Rvr68u6k5sI"
+    },
+    {
+        "id": 27,
+        "title": "The Shining",
+        "year": 1980,
+        "rating": 8.4,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=5Cb3ik6zP2I"
+    },
+    {
+        "id": 28,
+        "title": "Mission Impossible: Fallout",
+        "year": 2018,
+        "rating": 7.7,
+        "genre": "Action",
+        "poster": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=XiHiW4N7-bo"
+    },
+    {
+        "id": 29,
+        "title": "Inside Out",
+        "year": 2015,
+        "rating": 8.1,
+        "genre": "Family",
+        "poster": "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=seMwpP0yeu4"
+    },
+    {
+        "id": 30,
+        "title": "Logan",
+        "year": 2017,
+        "rating": 8.1,
+        "genre": "Action",
+        "poster": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=Div0iP65aZo"
+    },
+    {
+        "id": 31,
+        "title": "The Godfather",
+        "year": 1972,
+        "rating": 9.2,
+        "genre": "Action",
+        "poster": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=sY1S34973zA"
+    },
+    {
+        "id": 32,
+        "title": "The Shawshank Redemption",
+        "year": 1994,
+        "rating": 9.3,
+        "genre": "Drama",
+        "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=NmzuHjWmXOc"
+    },
+    {
+        "id": 33,
+        "title": "The Wolf of Wall Street",
+        "year": 2013,
+        "rating": 8.2,
+        "genre": "Comedy",
+        "poster": "/thewolfofwall.jpg",
+        "trailer": "https://www.youtube.com/watch?v=iszwuX1AK6A"
+    },
+    {
+        "id": 34,
+        "title": "Doctor Strange",
+        "year": 2016,
+        "rating": 7.5,
+        "genre": "Sci-Fi",
+        "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=HSzx-zryEgM"
+    },
+    {
+        "id": 35,
+        "title": "The Revenant",
+        "year": 2015,
+        "rating": 8.0,
+        "genre": "Thriller",
+        "poster": "https://images.unsplash.com/photo-1514302240736-b1fee59858eb?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=LoebZZ8K5N0"
+    },
+    {
+        "id": 36,
+        "title": "Frozen",
+        "year": 2013,
+        "rating": 7.4,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=TbQm5doF_Uc"
+    },
+    {
+        "id": 37,
+        "title": "The Exorcist",
+        "year": 1973,
+        "rating": 8.1,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=YDGw1MTEe9k"
+    },
+    {
+        "id": 38,
+        "title": "Spider-Man: No Way Home",
+        "year": 2021,
+        "rating": 8.3,
+        "genre": "Action",
+        "poster": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=JfVOs4VSpmA"
+    },
+    {
+        "id": 39,
+        "title": "The Fault in Our Stars",
+        "year": 2014,
+        "rating": 7.7,
+        "genre": "Romance",
+        "poster": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=9ItBvH5J6ss"
+    },
+    {
+        "id": 40,
+        "title": "Kung Fu Panda",
+        "year": 2008,
+        "rating": 7.6,
+        "genre": "Family",
+        "poster": "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=PXi3Mv6KMzY"
+    },
+    {
+        "id": 41,
+        "title": "Iron Man",
+        "year": 2008,
+        "rating": 7.9,
+        "genre": "Action",
+        "poster": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=8ugaeA-nMTc"
+    },
+    {
+        "id": 42,
+        "title": "Guardians of the Galaxy",
+        "year": 2014,
+        "rating": 8.0,
+        "genre": "Sci-Fi",
+        "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=d96cjJhvlMA"
+    },
+    {
+        "id": 43,
+        "title": "The Silence of the Lambs",
+        "year": 1991,
+        "rating": 8.6,
+        "genre": "Thriller",
+        "poster": "https://images.unsplash.com/photo-1514302240736-b1fee59858eb?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=W6Mm8Sbe__o"
+    },
+    {
+        "id": 44,
+        "title": "The Pursuit of Happyness",
+        "year": 2006,
+        "rating": 8.0,
+        "genre": "Family",
+        "poster": "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=89Kq8SDyvfg"
+    },
+    {
+        "id": 45,
+        "title": "The Terminator",
+        "year": 1984,
+        "rating": 8.1,
+        "genre": "Sci-Fi",
+        "poster": "https://images.unsplash.com/photo-1478720568477-152d9b164e63?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=k64P4l2Wmeg"
+    },
+    {
+        "id": 46,
+        "title": "Zootopia",
+        "year": 2016,
+        "rating": 8.0,
+        "genre": "Animation",
+        "poster": "https://images.unsplash.com/photo-1535016120720-40c6874c3b1c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=jWM0ct-OLsM"
+    },
+    {
+        "id": 47,
+        "title": "A Beautiful Mind",
+        "year": 2001,
+        "rating": 8.2,
+        "genre": "Romance",
+        "poster": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=aS_d0Ayjw4o"
+    },
+    {
+        "id": 48,
+        "title": "Alien",
+        "year": 1979,
+        "rating": 8.5,
+        "genre": "Horror",
+        "poster": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=jQ5lPt9edzQ"
+    },
+    {
+        "id": 49,
+        "title": "The Social Network",
+        "year": 2010,
+        "rating": 7.7,
+        "genre": "Drama",
+        "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=lB95KLmpLR4"
+    },
+    {
+        "id": 50,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "year": 2001,
+        "rating": 7.6,
+        "genre": "Family",
+        "poster": "https://images.unsplash.com/photo-1513883049090-d0b7439799bf?w=800&q=80",
+        "trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo"
+    }
+]

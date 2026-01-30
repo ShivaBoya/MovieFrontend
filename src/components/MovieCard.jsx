@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Trash2, Edit, Play, Plus, ChevronDown, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useUI } from '../context/UIContext';
 import { motion } from 'framer-motion';
 
 const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
     const { user } = useAuth();
+    const { playTrailer } = useUI();
     const isList = viewMode === 'list';
     const [isHovered, setIsHovered] = useState(false);
+
+    // Ensure we have a valid ID (MongoDB _id)
+    const movieId = movie._id;
 
     // Hybrid Data Normalization
     const title = movie.name || movie.title;
@@ -76,7 +81,16 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                 {/* Image */}
                 <div className="aspect-video w-full bg-slate-800">
                     {imageUrl ? (
-                        <img src={imageUrl} alt={title} className="w-full h-full object-cover" loading="lazy" />
+                        <img
+                            src={imageUrl}
+                            alt={title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80"; // Generic Cinema Fallback
+                            }}
+                        />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-slate-500">No Image</div>
                     )}
@@ -100,7 +114,13 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                     </div>
 
                     <div className="flex items-center gap-2 mt-1">
-                        <button className="bg-white text-black p-1.5 md:p-2 rounded-full hover:bg-slate-200 transition-colors">
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                playTrailer(movie._id);
+                            }}
+                            className="bg-white text-black p-1.5 md:p-2 rounded-full hover:bg-slate-200 transition-colors"
+                        >
                             <Play fill="black" size={isMobile ? 12 : 16} />
                         </button>
                         <button className="border-2 border-slate-400 text-white p-1 md:p-1.5 rounded-full hover:border-white transition-colors">

@@ -186,6 +186,18 @@ const MovieForm = ({ onSubmit, initialData, onClose, isDrawer = false }) => {
                     </div>
                 </div>
 
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-slate-400">Trailer URL (YouTube)</label>
+                    <input
+                        type="url"
+                        name="trailer"
+                        value={formData.trailer || ''}
+                        onChange={handleChange}
+                        placeholder="e.g. https://www.youtube.com/watch?v=..."
+                        className="bg-slate-950 border border-slate-700 p-3 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                    />
+                </div>
+
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-2">
                         <label className="text-sm font-medium text-slate-400">Release Year</label>
