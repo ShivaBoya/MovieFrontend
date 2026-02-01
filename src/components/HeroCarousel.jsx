@@ -21,8 +21,8 @@ const HeroCarousel = ({ movies }) => {
     const currentMovie = movies[currentIndex];
 
     // Fallback logic for images (same as MovieCard)
-    const backdropUrl = currentMovie.backdrop_path
-        ? `https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`
+    const backdropUrl = currentMovie.image || currentMovie.backdrop_path // Prioritize user provided 'image'
+        ? (currentMovie.image || `https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`)
         : (currentMovie.poster_path
             ? `https://image.tmdb.org/t/p/original${currentMovie.poster_path}`
             : currentMovie.poster); // Provide fallback if no backlight

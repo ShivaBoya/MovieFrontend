@@ -20,8 +20,8 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
     const rating = typeof movie.rating !== 'undefined' ? movie.rating : (movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A');
 
     // Prefer backdrop for landscape cards, fallback to poster
-    const imageUrl = movie.backdrop_path
-        ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+    const imageUrl = movie.image || movie.backdrop_path // Prioritize user provided 'image'
+        ? (movie.image || `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`)
         : (movie.poster || movie.Poster || (movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null));
 
     const matchScore = movie.vote_average ? Math.round(movie.vote_average * 10) : Math.floor(Math.random() * (99 - 70 + 1) + 70);

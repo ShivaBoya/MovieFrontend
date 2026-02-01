@@ -1,30 +1,39 @@
 import axios from 'axios';
+import { sampleMovies } from './data/sampleMovies';
 
 const api = axios.create({
     baseURL: 'https://moviebackend-2q46.onrender.com/api',
     withCredentials: true,
 });
 
-// ... (Interceptor remains same)
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 export const searchMovies = async (query) => {
-    const response = await api.get(`/search?title=${query}`);
-    return response.data;
+    // Search in local data
+    const lowerQuery = query.toLowerCase();
+    const results = sampleMovies.filter(movie =>
+        movie.name.toLowerCase().includes(lowerQuery) ||
+        (movie.description && movie.description.toLowerCase().includes(lowerQuery))
+    );
+    return { results };
 };
 
-// Backend API
+// Backend API Replacement
 export const fetchPopular = async (page = 1) => {
-    // Fetch from our local DB (seeded data)
-    const response = await api.get('/movies');
-    // Sort or filter if needed, for "Popular" we can just return the first 20 or sorted by rating
-    // Since our backend returns an array, we wrap it in { results: ... } to match UI expectation
-    return { results: response.data.slice(0, 20) };
+    // Return local data
+    return { results: sampleMovies };
 };
 
 export const fetchByGenre = async (genreId, page = 1) => {
-    // For now, fetch all and filter client-side or implement backend filtering
-    // Since we only have 80 movies, fetching all is fine
-    const response = await api.get('/movies');
     const genreMap = {
         28: "Action",
         35: "Comedy",
@@ -33,30 +42,36 @@ export const fetchByGenre = async (genreId, page = 1) => {
         10751: "Family",
         878: "Sci-Fi",
         53: "Thriller",
-        16: "Animation"
+        16: "Animation",
+        18: "Drama", // Added Drama
+        80: "Crime", // Added Crime
+        14: "Fantasy", // Added Fantasy
+        10752: "War" // Added War
     };
     const genreName = genreMap[genreId];
 
     if (!genreName) return { results: [] };
 
-    const filtered = response.data.filter(m => m.genre === genreName);
+    // Filter local data
+    const filtered = sampleMovies.filter(m => m.genre === genreName);
     return { results: filtered };
 };
 
 export const getTrailer = async (movieId) => {
     try {
-        // Fetch the specific movie from our backend
-        const response = await api.get(`/movies/${movieId}`);
-        const movie = response.data;
+        // Find movie in local data
+        const movie = sampleMovies.find(m => m._id === movieId);
 
-        if (movie && movie.trailer) {
+        if (movie && movie.trailerUrl) {
             // Extract video ID from YouTube URL
-            // Supports: https://www.youtube.com/watch?v=ID and https://youtu.be/ID
+            // Supports: https://www.youtube.com/embed/ID, https://www.youtube.com/watch?v=ID and https://youtu.be/ID
             let videoId = null;
-            if (movie.trailer.includes('v=')) {
-                videoId = movie.trailer.split('v=')[1].split('&')[0];
-            } else if (movie.trailer.includes('youtu.be/')) {
-                videoId = movie.trailer.split('youtu.be/')[1].split('?')[0];
+            if (movie.trailerUrl.includes('embed/')) {
+                videoId = movie.trailerUrl.split('embed/')[1];
+            } else if (movie.trailerUrl.includes('v=')) {
+                videoId = movie.trailerUrl.split('v=')[1].split('&')[0];
+            } else if (movie.trailerUrl.includes('youtu.be/')) {
+                videoId = movie.trailerUrl.split('youtu.be/')[1].split('?')[0];
             }
 
             if (videoId) {
@@ -72,13 +87,17 @@ export const getTrailer = async (movieId) => {
 
 
 export const updateMovie = async (id, movieData) => {
-    const response = await api.put(`/movies/${id}`, movieData);
-    return response.data;
+    // Mock update - in a real app this would call backend or update local state context
+    console.log("Update requested for", id, movieData);
+    return movieData;
 };
 
 export const deleteMovie = async (id) => {
-    const response = await api.delete(`/movies/${id}`);
-    return response.data;
+    // Mock delete
+    console.log("Delete requested for", id);
+    // Note: This won't persist in a real app unless we use state/context for the source of truth
+    // But for this session it mimics the API success
+    return { message: "Movie deleted" };
 };
 
 export default api;
