@@ -11,7 +11,6 @@ const BookingPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Fetch Showtime Details
         const fetchShowtime = async () => {
             try {
                 const res = await api.get(`/showtimes/${showtimeId}`);
@@ -25,14 +24,11 @@ const BookingPage = () => {
 
         fetchShowtime();
 
-        // Connect Socket
         socket.connect();
         socket.emit('join-showtime', showtimeId);
 
         socket.on('seat-locked', ({ seatId, userId }) => {
             toast(`${seatId} is being booked...`, { icon: '🔒' });
-            // In a real app, update state to show seat as locked (e.g. gray pending)
-            // For now we just notify.
         });
 
         return () => {
@@ -68,13 +64,11 @@ const BookingPage = () => {
                     <p className="text-slate-400">{showtime.theater.name} | {new Date(showtime.startTime).toLocaleString()}</p>
                 </header>
 
-                {/* Screen */}
                 <div className="mb-12">
                     <div className="h-2 w-full bg-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.5)] rounded-full mb-4"></div>
                     <p className="text-center text-xs text-slate-500 uppercase tracking-widest">Screen</p>
                 </div>
 
-                {/* Seat Grid */}
                 <div className="flex flex-col gap-4 items-center mb-12 overflow-x-auto">
                     {[...Array(rows)].map((_, i) => (
                         <div key={i} className="flex gap-3">
@@ -106,7 +100,6 @@ const BookingPage = () => {
                     ))}
                 </div>
 
-                {/* Summary Footer */}
                 <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 fixed bottom-6 left-6 right-6 max-w-4xl mx-auto shadow-2xl z-50">
                     <div>
                         <p className="text-slate-400 text-sm">Selected Seats</p>
@@ -124,7 +117,6 @@ const BookingPage = () => {
                     </button>
                 </div>
 
-                {/* Spacer for fixed footer */}
                 <div className="h-24"></div>
             </div>
         </div>

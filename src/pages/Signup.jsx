@@ -28,7 +28,6 @@ const Signup = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4 font-sans relative overflow-hidden bg-slate-950">
-            {/* Animated Background */}
             <motion.div
                 animate={{
                     scale: [1, 1.3, 1],

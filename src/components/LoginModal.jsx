@@ -26,7 +26,6 @@ const LoginModal = ({ isOpen, onClose }) => {
         setLoading(true);
         try {
             const endpoint = isLogin ? '/auth/login' : '/auth/register';
-            // Use centralized api instance
             const { data } = await api.post(endpoint, formData);
             login(data);
             toast.success(isLogin ? `Welcome back!` : `Account created!`);
@@ -57,7 +56,6 @@ const LoginModal = ({ isOpen, onClose }) => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden"
             >
-                {/* Close Button */}
                 <button
                     onClick={onClose}
                     className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors z-10"
@@ -76,7 +74,6 @@ const LoginModal = ({ isOpen, onClose }) => {
                     </div>
 
                     <div className="space-y-4">
-                        {/* Google Button */}
                         <button
                             onClick={handleGoogleSignIn}
                             className="w-full bg-white text-slate-900 font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-100 transition-colors"
@@ -91,7 +88,6 @@ const LoginModal = ({ isOpen, onClose }) => {
                             <div className="h-px bg-slate-800 flex-1" />
                         </div>
 
-                        {/* Email Form */}
                         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                             {!isLogin && (
                                 <div className="space-y-1">

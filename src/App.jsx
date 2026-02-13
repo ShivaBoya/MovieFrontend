@@ -20,11 +20,10 @@ import Profile from './pages/Profile';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
   const hideNavbarRoutes = ['/login', '/signup'];
   const showNavbar = !hideNavbarRoutes.includes(location.pathname);
 
-  // Use UI Context for Global Drawer and Login Modal
   const {
     isDrawerOpen, closeDrawer, editingMovie, triggerMovieRefresh,
     isLoginModalOpen, closeLoginModal
@@ -38,9 +37,9 @@ const Layout = ({ children }) => {
       } else {
         await api.post('/movies', data);
         toast.success('Movie created successfully!');
-        navigate('/collection'); // Navigate to collection after adding
+        navigate('/collection');
       }
-      triggerMovieRefresh(); // Notify Home to reload
+      triggerMovieRefresh();
       closeDrawer();
     } catch (err) {
       toast.error(editingMovie ? 'Failed to update' : 'Failed to create');
@@ -56,7 +55,6 @@ const Layout = ({ children }) => {
       </main>
       {showNavbar && <Footer />}
 
-      {/* Global Movie Drawer */}
       <MovieDrawer
         isOpen={isDrawerOpen}
         onClose={closeDrawer}
@@ -64,13 +62,11 @@ const Layout = ({ children }) => {
         onSubmit={handleGlobalSubmit}
       />
 
-      {/* Global Login Modal */}
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={closeLoginModal}
       />
 
-      {/* Global Trailer Modal */}
       <TrailerModal />
     </div>
   );

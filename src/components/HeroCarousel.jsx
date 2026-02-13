@@ -7,12 +7,11 @@ const HeroCarousel = ({ movies }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const { playTrailer } = useUI();
 
-    // Auto-slide effect
     useEffect(() => {
         if (!movies || movies.length === 0) return;
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % movies.length);
-        }, 8000); // Change every 8 seconds
+        }, 8000);
         return () => clearInterval(timer);
     }, [movies]);
 
@@ -20,12 +19,11 @@ const HeroCarousel = ({ movies }) => {
 
     const currentMovie = movies[currentIndex];
 
-    // Fallback logic for images (same as MovieCard)
-    const backdropUrl = currentMovie.image || currentMovie.backdrop_path // Prioritize user provided 'image'
+    const backdropUrl = currentMovie.image || currentMovie.backdrop_path
         ? (currentMovie.image || `https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`)
         : (currentMovie.poster_path
             ? `https://image.tmdb.org/t/p/original${currentMovie.poster_path}`
-            : currentMovie.poster); // Provide fallback if no backlight
+            : currentMovie.poster);
 
     const title = currentMovie.title || currentMovie.name;
     const overview = currentMovie.overview || currentMovie.description || "No description available.";
@@ -44,7 +42,6 @@ const HeroCarousel = ({ movies }) => {
                     transition={{ duration: 0.7 }}
                     className="absolute inset-0"
                 >
-                    {/* Background Image */}
                     <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-linear transform scale-105"
                         style={{ backgroundImage: `url(${backdropUrl})` }}
@@ -55,7 +52,6 @@ const HeroCarousel = ({ movies }) => {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Content Content */}
             <div className="absolute inset-0 flex items-center px-8 md:px-16 z-20">
                 <div className="max-w-2xl space-y-6">
                     <motion.h1
@@ -92,7 +88,6 @@ const HeroCarousel = ({ movies }) => {
                     >
                         {overview}
                     </motion.p>
-                    {/* Action Buttons */}
                     <motion.div
                         key={`${currentIndex}-actions`}
                         initial={{ y: 20, opacity: 0 }}
@@ -115,7 +110,6 @@ const HeroCarousel = ({ movies }) => {
                 </div>
             </div>
 
-            {/* Navigation Arrows - Visible on Group Hover */}
             <button
                 onClick={prevSlide}
                 className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/30 hover:bg-black/60 rounded-full backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 transition-all z-30 border border-white/10"
@@ -129,7 +123,6 @@ const HeroCarousel = ({ movies }) => {
                 <ChevronRight size={32} />
             </button>
 
-            {/* Indicators */}
             <div className="absolute bottom-6 right-8 flex gap-2 z-30">
                 {movies.map((_, idx) => (
                     <button

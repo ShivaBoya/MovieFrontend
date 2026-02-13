@@ -21,7 +21,6 @@ const Navbar = () => {
         setIsMobileMenuOpen(false);
     };
 
-    // 3D Button Variant
     const button3D = {
         rest: { scale: 1, y: 0, boxShadow: "0px 0px 0px rgba(0,0,0,0)" },
         hover: {
@@ -36,7 +35,6 @@ const Navbar = () => {
     return (
         <nav className="sticky top-0 z-40 w-full backdrop-blur-xl border-b border-white/10 bg-white/70 dark:bg-slate-900/70 transition-colors duration-300 shadow-2xl shadow-black/5">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                {/* Logo */}
                 <Link to="/" className="flex items-center gap-2 group perspective-1000">
                     <motion.div
                         whileHover={{
@@ -53,9 +51,7 @@ const Navbar = () => {
                     </motion.div>
                 </Link>
 
-                {/* Desktop Actions */}
                 <div className="hidden md:flex items-center gap-4">
-                    {/* Theme Toggle */}
                     <motion.button
                         variants={button3D}
                         initial="rest"
@@ -68,7 +64,6 @@ const Navbar = () => {
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </motion.button>
 
-                    {/* My Collection Link */}
                     {user && (
                         <Link to="/collection">
                             <motion.span
@@ -80,7 +75,6 @@ const Navbar = () => {
                         </Link>
                     )}
 
-                    {/* Add Movie Button (Desktop) */}
                     {user && (
                         <motion.button
                             variants={button3D}
@@ -95,7 +89,6 @@ const Navbar = () => {
                         </motion.button>
                     )}
 
-                    {/* Auth State */}
                     {user ? (
                         <div className="flex items-center gap-4 pl-4 border-l border-slate-200 dark:border-slate-700">
                             <Link to="/profile" className="flex items-center gap-3 group">
@@ -146,7 +139,6 @@ const Navbar = () => {
                     )}
                 </div>
 
-                {/* Mobile Menu Button */}
                 <motion.button
                     whileTap={{ scale: 0.9 }}
                     className="md:hidden p-2 text-slate-600 dark:text-slate-400"
@@ -156,7 +148,6 @@ const Navbar = () => {
                 </motion.button>
             </div>
 
-            {/* Mobile Menu Dropdown with AnimatePresence */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div

@@ -25,7 +25,6 @@ const Profile = () => {
                 toast.error("Passwords don't match!");
                 return;
             }
-            // Only send password if it's not empty
             const dataToSend = {
                 username: formData.username,
                 email: formData.email
@@ -61,7 +60,6 @@ const Profile = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* User Card */}
                     <div className="md:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
                         <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-blue-500 to-violet-500 flex items-center justify-center text-4xl font-bold text-white mb-4 shadow-lg shadow-blue-500/30">
                             {user.username?.[0]?.toUpperCase()}
@@ -81,7 +79,6 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    {/* Details / History */}
                     <div className="md:col-span-2 space-y-8">
                         <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
                             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
@@ -108,14 +105,12 @@ const Profile = () => {
                                     Browse Movies
                                 </button>
                             </div>
-                            {/* Decorative bg element */}
                             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Edit Profile Modal */}
             {isEditing && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
                     <div className="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative animate-in zoom-in-95 duration-200">

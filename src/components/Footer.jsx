@@ -23,7 +23,6 @@ const Footer = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border-t border-slate-200 dark:border-slate-800/50 py-10 mt-auto relative overflow-hidden"
         >
-            {/* Background Glow */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10" />
 
@@ -42,7 +41,7 @@ const Footer = () => {
                         &copy; {currentYear} Created by Shiva.
                     </p>
                     <p className="flex items-center gap-1.5 text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">
-                        Built with <Heart size={12} className="text-red-500 fill-red-500 animate-pulse" /> using React, Node & Tailwind
+                        <Heart size={12} className="text-red-500 fill-red-500 animate-pulse" />
                     </p>
                 </div>
 

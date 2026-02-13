@@ -14,7 +14,6 @@ const MyCollection = () => {
     const { user } = useAuth();
     const { openDrawer, movieRefreshTrigger } = useUI();
 
-    // Fetch Local Data
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -49,7 +48,6 @@ const MyCollection = () => {
 
     return (
         <div className="min-h-screen bg-transparent text-white font-sans pb-20 pt-24 px-4 md:px-10">
-            {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -68,13 +66,10 @@ const MyCollection = () => {
                 )}
             </div>
 
-            {/* Stats Overview (Genre Distribution) */}
             <StatsOverview movies={localMovies} />
 
-            {/* Content Divider */}
             <div className="h-px bg-slate-800 my-8" />
 
-            {/* Local Movies Grid */}
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-white">All Movies ({localMovies.length})</h2>
                 <div className="flex bg-slate-800 rounded-lg p-1">

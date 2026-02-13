@@ -10,30 +10,25 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
     const isList = viewMode === 'list';
     const [isHovered, setIsHovered] = useState(false);
 
-    // Ensure we have a valid ID (MongoDB _id)
     const movieId = movie._id;
 
-    // Hybrid Data Normalization
     const title = movie.name || movie.title;
     const genre = movie.genre || (movie.genre_ids ? 'Popular' : 'Unknown');
     const year = movie.releaseYear || (movie.release_date ? movie.release_date.substring(0, 4) : 'N/A');
     const rating = typeof movie.rating !== 'undefined' ? movie.rating : (movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A');
 
-    // Prefer backdrop for landscape cards, fallback to poster
-    const imageUrl = movie.image || movie.backdrop_path // Prioritize user provided 'image'
+    const imageUrl = movie.image || movie.backdrop_path
         ? (movie.image || `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`)
         : (movie.poster || movie.Poster || (movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null));
 
     const matchScore = movie.vote_average ? Math.round(movie.vote_average * 10) : Math.floor(Math.random() * (99 - 70 + 1) + 70);
 
-    // Detect mobile
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     const handleClick = () => {
         console.log(`Clicked on ${title}`);
     };
 
-    // List View Render
     if (isList) {
         return (
             <div className="bg-slate-800 border border-slate-700 rounded-xl flex items-center justify-between p-4 px-6 hover:bg-slate-700/50 transition-colors">
@@ -54,7 +49,6 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
         );
     }
 
-    // Grid View Render
     return (
         <motion.div
             className='relative bg-transparent rounded-lg cursor-pointer transition-all duration-300'
@@ -78,7 +72,6 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                     }
                 }}
             >
-                {/* Image */}
                 <div className="aspect-video w-full bg-slate-800">
                     {imageUrl ? (
                         <img
@@ -88,7 +81,7 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                             loading="lazy"
                             onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80"; // Generic Cinema Fallback
+                                e.target.src = "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80";
                             }}
                         />
                     ) : (
@@ -96,7 +89,6 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                     )}
                 </div>
 
-                {/* Info Overlay */}
                 <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-3 md:p-4"
                     initial={{ opacity: 0 }}
@@ -126,13 +118,11 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                         <button className="border-2 border-slate-400 text-white p-1 md:p-1.5 rounded-full hover:border-white transition-colors">
                             <Plus size={isMobile ? 12 : 16} />
                         </button>
-                        {/* Mobile Action Buttons (Visible Always) */}
                         {user && isMobile && (
                             <div className="ml-auto flex gap-2">
                                 <ActionButtons user={user} movie={movie} onEdit={onEdit} onDelete={onDelete} mini />
                             </div>
                         )}
-                        {/* Desktop Expand Arrow */}
                         {!isMobile && (
                             <div className="ml-auto">
                                 <button className="border border-slate-500 text-slate-300 p-1 rounded-full hover:border-white hover:text-white transition-colors">
@@ -142,7 +132,6 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                         )}
                     </div>
 
-                    {/* Desktop Extra Info */}
                     <div className="hidden md:block mt-2">
                         <div className="flex items-center gap-2 text-[10px] text-slate-300">
                             <span className="flex items-center gap-1"><Star size={10} fill="currentColor" className="text-yellow-500" /> {rating}</span>
@@ -151,7 +140,6 @@ const MovieCard = ({ movie, onDelete, onEdit, viewMode = 'grid' }) => {
                         </div>
                     </div>
 
-                    {/* Admin Actions (Desktop Only - Top Right) */}
                     {user && !isMobile && (
                         <div className="absolute top-2 right-2">
                             <ActionButtons user={user} movie={movie} onEdit={onEdit} onDelete={onDelete} mini />

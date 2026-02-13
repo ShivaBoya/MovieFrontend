@@ -7,7 +7,6 @@ import MovieCard from '../components/MovieCard';
 import { useAuth } from '../context/AuthContext';
 import { useUI } from '../context/UIContext';
 
-// Row Component for individual categories (Grid Layout)
 const MovieRow = ({ title, fetchFn, genreId, onEdit, onDelete, index }) => {
     const [movies, setMovies] = useState([]);
     const { movieRefreshTrigger } = useUI();
@@ -33,14 +32,13 @@ const MovieRow = ({ title, fetchFn, genreId, onEdit, onDelete, index }) => {
 
     if (movies.length === 0) return null;
 
-    // 3D Stagger & Reveal Animation
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
                 staggerChildren: 0.1,
-                delayChildren: index * 0.1 // Stagger rows
+                delayChildren: index * 0.1
             }
         }
     };
@@ -98,11 +96,10 @@ const MovieRow = ({ title, fetchFn, genreId, onEdit, onDelete, index }) => {
 };
 
 const Home = () => {
-    const [popularMovies, setPopularMovies] = useState([]); // For Hero
+    const [popularMovies, setPopularMovies] = useState([]);
     const { user } = useAuth();
     const { openDrawer, triggerMovieRefresh } = useUI();
 
-    // Initial Load (Hero Data Only)
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -117,7 +114,6 @@ const Home = () => {
         loadData();
     }, []);
 
-    // Handlers
     const handleEdit = (movie) => {
         openDrawer(movie);
     };
@@ -138,7 +134,6 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-transparent text-white font-sans pb-20 overflow-x-hidden">
 
-            {/* 1. Hero Section with 3D Entrance */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -148,7 +143,6 @@ const Home = () => {
                 {popularMovies.length > 0 && <HeroCarousel movies={popularMovies.slice(0, 8)} />}
             </motion.div>
 
-            {/* 2. Content Stacked Rows with 3D Animations */}
             <div className="flex flex-col gap-4 mt-8 relative z-20 container mx-auto transform-gpu">
                 <MovieRow index={0} title="All Movies" fetchFn={() => fetchPopular(1)} onEdit={handleEdit} onDelete={handleDelete} />
                 <MovieRow index={1} title="Action Blockbusters" genreId={28} onEdit={handleEdit} onDelete={handleDelete} />

@@ -40,21 +40,18 @@ const MovieForm = ({ onSubmit, initialData, onClose, isDrawer = false }) => {
         return () => clearTimeout(delayDebounceFn);
     }, [searchQuery]);
 
-    // ManualSelect/SelectMovie remains same
     const selectMovie = (movie) => {
         setFormData({
             name: movie.Title,
             genre: movie.Type === 'movie' ? 'Movie' : movie.Type,
             releaseYear: parseInt(movie.Year) || new Date().getFullYear(),
             rating: 5,
-            description: 'No description available', // OMDb search results don't have plot, need full fetch if we want it
+            description: 'No description available',
             poster: movie.Poster !== 'N/A' ? movie.Poster : ''
         });
         setSearchResults([]);
-        setSearchQuery(movie.Title); // Update input to show selected
+        setSearchQuery(movie.Title);
     };
-
-    // ...
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -78,7 +75,6 @@ const MovieForm = ({ onSubmit, initialData, onClose, isDrawer = false }) => {
                 </div>
             )}
 
-            {/* Search Bar - Only show when adding new movie */}
             {!initialData && (
                 <div className="mb-6 relative">
                     <div className="relative">
@@ -170,7 +166,6 @@ const MovieForm = ({ onSubmit, initialData, onClose, isDrawer = false }) => {
                             }}
                             className="bg-slate-950 border border-slate-700 p-3 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition-all"
                         />
-                        {/* URL Fallback or Preview */}
                         <div className="text-xs text-slate-500 text-center">- OR -</div>
                         <input
                             type="url"

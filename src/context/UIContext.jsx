@@ -28,13 +28,10 @@ export const UIProvider = ({ children }) => {
 
     const playTrailer = async (movieId) => {
         try {
-            console.log("Attempting to play trailer for movie:", movieId); // Debug
             const data = await getTrailer(movieId);
-            console.log("Trailer API response:", data); // Debug
             const video = data.results?.find(v => v.type === "Trailer" && v.site === "YouTube");
 
             if (video) {
-                console.log("Found trailer:", video.key); // Debug
                 setTrailerVideo(video.key);
             } else {
                 console.warn("No trailer found for this movie");
